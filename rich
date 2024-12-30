@@ -79,7 +79,16 @@ local Toggle2 = MainTab:CreateToggle({
    CurrentValue = false,
    Flag = "Toggle2",
    Callback = function(Value)
-      loadstring(game:HttpGet("https://pastebin.com/raw/bYAQqdYB", true))(1)
+      loadstring(game:HttpGet("https://pastebin.com/raw/QjW4UMap",true))()
    end,
 })
 Toggle2:Set(false)
+
+local Button = Tab:CreateButton({
+   Name = "Fast Execute (PremiumFarm)",
+   Info = "For 2sec mission", -- Speaks for itself, Remove if none.
+   Interact = 'Changable',
+   Callback = function()
+  	 loadstring(game:HttpGet("https://pastebin.com/raw/eRrFGdZw",true))()
+   end,
+})
