@@ -1,6 +1,6 @@
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/UI-Interface/CustomFIeld/main/RayField.lua'))()
 local textToCopy = "https://loot-link.com/s?EKCD2BZO"
-setclipboard(textToCopy)
+--setclipboard(textToCopy)
 
 Rayfield:Notify({
     Title = "Key System",
@@ -52,25 +52,9 @@ local Toggle = MainTab:CreateToggle({
     CurrentValue = false,
     Flag = "Toggle1", 
     Callback = function(Value)
+    loadstring(game:HttpGet("https://pastebin.com/raw/HqFMN0M8",true))()
     end,
 })
-
-if Toggle.CurrentValue == true then
-    Rayfield:Notify({
-        Title = "Notification",
-        Content = "NOT AVAIL RN YOU NERD",
-        Duration = 6.5,
-        Image = 4483362458,
-        Actions = { -- Notification Buttons
-            Ignore = {
-                Name = "Okay!",
-                Callback = function()
-                    print("not avail")
-                end
-            },
-        },
-    })
-end
 Toggle:Set(false)
 
 local Toggle2 = MainTab:CreateToggle({
@@ -92,3 +76,26 @@ local Button = MainTab:CreateButton({
         loadstring(game:HttpGet("https://pastebin.com/raw/eRrFGdZw",true))()
     end,
 })
+
+
+local Toggle3 = MainTab:CreateToggle({
+    Name = "AutoEscape",
+    Info = "Escape a titan's hand/mouth",
+    CurrentValue = false,
+    Flag = "Toggle3",
+    Callback = function(Value)
+        loadstring(game:HttpGet("https://pastebin.com/raw/6eQNeKSb",true))()
+    end,
+})
+Toggle2:Set(false)
+
+local Toggle4 = MainTab:CreateToggle({
+    Name = "AutoReload",
+    Info = "Reload the blades AFK Refill",
+    CurrentValue = false,
+    Flag = "Toggle4",
+    Callback = function(Value)
+        loadstring(game:HttpGet("https://pastebin.com/raw/NuwCwg64",true))()
+    end,
+})
+Toggle2:Set(false)
