@@ -1,0 +1,85 @@
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/UI-Interface/CustomFIeld/main/RayField.lua'))()
+local textToCopy = "https://loot-link.com/s?EKCD2BZO"
+        setclipboard(textToCopy)
+
+    Rayfield:Notify({
+	Title = "Key System",
+	Content = "Enjoy your script bitch",
+	Duration = 6.5,
+	Image = 4483362458,
+	Actions = { -- Notification Buttons
+		Ignore = {
+			Name = "👆",
+			Callback = function()
+				print("KEY Correct")
+			end
+		},
+	},
+})
+
+local MainWindow = Rayfield:CreateWindow({
+    Name = "Main",
+    LoadingTitle = "WaitNigga",
+    LoadingSubtitle = "by Rich Hub",
+    ConfigurationSaving = {
+       Enabled = true,
+       FolderName = RayfieldFolder, -- Create a custom folder for your hub/game
+       FileName = "ConfigSaver"
+    },
+    Discord = {
+       Enabled = true,
+       Invite = "HMTXaBA6", -- The Discord invite code, do not include discord.gg/
+       RememberJoins = false -- Set this to false to make them join the discord every time they load it up
+    },
+    KeySystem = false, -- Set this to true to use our key system
+    KeySettings = {
+       Title = "Rich Hub",
+       Subtitle = "Key System",
+       Note = "Join the discord https://discord.gg/HMTXaBA6",
+       FileName = "KeyFile",
+       SaveKey = true,
+       GrabKeyFromSite = true, 
+       Key = "https://pastebin.com/raw/QgBkc2aH"
+    }
+ })
+
+ 
+ local MainTab = MainWindow:CreateTab("Main", 4483362458)
+
+local Toggle = MainTab:CreateToggle({
+   Name = "FreeFarm",
+   Info = "Auto Farm For Poor People", 
+   CurrentValue = false,
+   Flag = "Toggle1", 
+   Callback = function(Value)
+   end,
+})
+
+   if Toggle.CurrentValue == true then
+      Rayfield:Notify({
+         Title = "Nigger",
+         Content = "NOT AVAIL RN YOU NERD",
+         Duration = 6.5,
+         Image = 4483362458,
+         Actions = { -- Notification Buttons
+            Ignore = {
+               Name = "Okay!",
+               Callback = function()
+                  print("not avail")
+               end
+            },
+         },
+      })
+   end
+Toggle:Set(false)
+
+local Toggle2 = MainTab:CreateToggle({
+   Name = "PremiumFarm",
+   Info = "For Premium Users",
+   CurrentValue = false,
+   Flag = "Toggle2",
+   Callback = function(Value)
+      loadstring(game:HttpGet("https://pastebin.com/raw/bYAQqdYB", true))(1)
+   end,
+})
+Toggle2:Set(false)
