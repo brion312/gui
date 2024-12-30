@@ -1,20 +1,20 @@
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/UI-Interface/CustomFIeld/main/RayField.lua'))()
 local textToCopy = "https://loot-link.com/s?EKCD2BZO"
-        setclipboard(textToCopy)
+setclipboard(textToCopy)
 
-    Rayfield:Notify({
-	Title = "Key System",
-	Content = "Enjoy your script bitch",
-	Duration = 6.5,
-	Image = 4483362458,
-	Actions = { -- Notification Buttons
-		Ignore = {
-			Name = "👆",
-			Callback = function()
-				print("KEY Correct")
-			end
-		},
-	},
+Rayfield:Notify({
+    Title = "Key System",
+    Content = "Enjoy your script!",
+    Duration = 6.5,
+    Image = 4483362458,
+    Actions = { -- Notification Buttons
+        Ignore = {
+            Name = "👆",
+            Callback = function()
+                print("KEY Correct")
+            end
+        },
+    },
 })
 
 local MainWindow = Rayfield:CreateWindow({
@@ -23,7 +23,7 @@ local MainWindow = Rayfield:CreateWindow({
     LoadingSubtitle = "by Rich Hub",
     ConfigurationSaving = {
        Enabled = true,
-       FolderName = RayfieldFolder, -- Create a custom folder for your hub/game
+       FolderName = "RayfieldFolder", -- Create a custom folder for your hub/game
        FileName = "ConfigSaver"
     },
     Discord = {
@@ -41,54 +41,87 @@ local MainWindow = Rayfield:CreateWindow({
        GrabKeyFromSite = true, 
        Key = "https://pastebin.com/raw/QgBkc2aH"
     }
- })
-
- 
- local MainTab = MainWindow:CreateTab("Main", 4483362458)
-
-local Toggle = MainTab:CreateToggle({
-   Name = "FreeFarm",
-   Info = "Auto Farm For Poor People", 
-   CurrentValue = false,
-   Flag = "Toggle1", 
-   Callback = function(Value)
-   end,
 })
 
-   if Toggle.CurrentValue == true then
-      Rayfield:Notify({
-         Title = "Nigger",
-         Content = "NOT AVAIL RN YOU NERD",
-         Duration = 6.5,
-         Image = 4483362458,
-         Actions = { -- Notification Buttons
+-- Dragging logic for the MainWindow
+local UIS = game:GetService("UserInputService")
+local dragging, dragStart, startPos
+local mainGui = MainWindow.UIInstance or MainWindow -- Update this if the GUI instance is named differently
+
+if mainGui then
+    local function update(input)
+        local delta = input.Position - dragStart
+        mainGui.Position = UDim2.new(
+            startPos.X.Scale, startPos.X.Offset + delta.X,
+            startPos.Y.Scale, startPos.Y.Offset + delta.Y
+        )
+    end
+
+    mainGui.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true
+            dragStart = input.Position
+            startPos = mainGui.Position
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragging = false
+                end
+            end)
+        end
+    end)
+
+    mainGui.InputChanged:Connect(function(input)
+        if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+            update(input)
+        end
+    end)
+end
+
+local MainTab = MainWindow:CreateTab("Main", 4483362458)
+
+local Toggle = MainTab:CreateToggle({
+    Name = "FreeFarm",
+    Info = "Auto Farm For Poor People", 
+    CurrentValue = false,
+    Flag = "Toggle1", 
+    Callback = function(Value)
+    end,
+})
+
+if Toggle.CurrentValue == true then
+    Rayfield:Notify({
+        Title = "Notification",
+        Content = "NOT AVAIL RN YOU NERD",
+        Duration = 6.5,
+        Image = 4483362458,
+        Actions = { -- Notification Buttons
             Ignore = {
-               Name = "Okay!",
-               Callback = function()
-                  print("not avail")
-               end
+                Name = "Okay!",
+                Callback = function()
+                    print("not avail")
+                end
             },
-         },
-      })
-   end
+        },
+    })
+end
 Toggle:Set(false)
 
 local Toggle2 = MainTab:CreateToggle({
-   Name = "PremiumFarm",
-   Info = "For Premium Users",
-   CurrentValue = false,
-   Flag = "Toggle2",
-   Callback = function(Value)
-      loadstring(game:HttpGet("https://pastebin.com/raw/QjW4UMap",true))()
-   end,
+    Name = "PremiumFarm",
+    Info = "For Premium Users",
+    CurrentValue = false,
+    Flag = "Toggle2",
+    Callback = function(Value)
+        loadstring(game:HttpGet("https://pastebin.com/raw/QjW4UMap",true))()
+    end,
 })
 Toggle2:Set(false)
 
-local Button = Tab:CreateButton({
-   Name = "Fast Execute (PremiumFarm)",
-   Info = "For 2sec mission", -- Speaks for itself, Remove if none.
-   Interact = 'Changable',
-   Callback = function()
-  	 loadstring(game:HttpGet("https://pastebin.com/raw/eRrFGdZw",true))()
-   end,
+local Button = MainTab:CreateButton({
+    Name = "Fast Execute (PremiumFarm)",
+    Info = "For 2sec mission",
+    Interact = 'Changable',
+    Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/eRrFGdZw",true))()
+    end,
 })
